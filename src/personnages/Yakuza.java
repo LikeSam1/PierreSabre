@@ -15,6 +15,8 @@ public class Yakuza extends Humain {
 
     // Méthode pour extorquer un commerçant
     public void extorquer(Commercant victime) {
+    	parler("Tiens, tiens, ne serait-ce pas un faible marchand qui passe par là ?");
+        parler("Marco, si tu tiens à la vie, donne-moi ta bourse !");
         int argentExtorque = victime.seFaireExtorquer();  // Le yakuza extorque tout l'argent du commerçant
         gagnerArgent(argentExtorque);  // Le yakuza récupère l'argent extorqué
         reputation++;  // Augmentation de la réputation du yakuza
