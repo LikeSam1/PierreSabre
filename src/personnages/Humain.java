@@ -43,17 +43,17 @@ public class Humain {
     }
 
     // Méthode pour gagner de l'argent
-    private void gagnerArgent(int gain) {
+    protected void gagnerArgent(int gain) {
         argent += gain;
     }
 
     // Méthode pour perdre de l'argent
-    private void perdreArgent(int perte) {
+    protected void perdreArgent(int perte) {
         argent -= perte;
     }
 
     // Méthode générique pour faire parler un humain
-    private void parler(String texte) {
+    protected void parler(String texte) {
         System.out.println("(" + nom + ") - " + texte);
     }
 }
