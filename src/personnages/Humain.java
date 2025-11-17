@@ -47,4 +47,13 @@ public class Humain {
 	protected void parler(String texte) {
 		System.out.println("(" + nom + ") - " + texte);
 	}
+
+	//Accesseur argent
+	public int getArgent() {
+		return argent;
+	}
+
+	public String getNom() {
+		return nom;
+	}
 }
