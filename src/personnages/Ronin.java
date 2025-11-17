@@ -6,16 +6,37 @@ public class Ronin extends Humain {
 
     // Constructeur
     public Ronin(String nom, String boissonFavorite, int argent) {
-        super(nom, boissonFavorite, argent);  // Appel au constructeur de la classe mère Humain
-        this.honneur = 1;  // Initialisation de l'honneur
+        super(nom, boissonFavorite, argent);
+        this.honneur = 1;
     }
 
-    // Méthode qui permet au Ronin de donner 10% de son argent à un commerçant
     public void donner(Commercant beneficiaire) {
-        int montantDonne = (int) (getArgent() * 0.10);  // 10% de l'argent du Ronin
-        perdreArgent(montantDonne);  // Le Ronin perd cet argent
-        beneficiaire.gagnerArgent(montantDonne);  // Le commerçant gagne cet argent
+        int montantDonne = (int) (getArgent() * 0.10);
+        perdreArgent(montantDonne);
+        beneficiaire.gagnerArgent(montantDonne);
         parler("Marco prend ces " + montantDonne + " sous.");
         beneficiaire.parler(montantDonne + " sous ! Je te remercie généreux donateur!");
     }
+    
+    public void provoquer(Yakuza adversaire) {
+    	parler("Je t'ai retrouvé vermine, tu vas payer pour ce que tu as fait à ce pauvre marchand!");
+    	int force = honneur * 2;
+
+    	if (force >= adversaire.getReputation()) {
+    		parler("Je t'ai eu petit yakuza!");
+    		int gain = adversaire.perdre();
+    		gagnerArgent(gain);
+    		honneur += 1;
+    	} else {
+    		int perte = getArgent();
+    		perdreArgent(perte);
+    		honneur -= 1;
+    		parler("J'ai perdu contre ce yakuza, mon honneur et ma bourse ont en pris un coup.");
+    		adversaire.gagner(perte);
+    	}
+    }
+
+	public int getHonneur() {
+		return honneur;
+	}
 }
